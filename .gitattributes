@@ -1,17 +1,16 @@
-*.cpy zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.cbl zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.jcl zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.bms zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.pli zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.inc zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.asm zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.mfs zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.bnd zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.lnk zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.rex zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.txt zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.groovy zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.sh zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.properties zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.rexx zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
-*.config zos-working-tree-encoding=ibm-1047 git-encoding=utf-8
+# This .gitattributes file will cause all text files EXCEPT for
+# git's .gitattributes and .gitignore files to be encoded as EBCDIC.
+# Selected binary files will not be translated at all.
+
+# The default for text files
+* git-encoding=iso8859-1 zos-working-tree-encoding=ibm-1047
+
+# git's files (which MUST be ASCII)
+.gitattributes git-encoding=iso8859-1 zos-working-tree-encoding=iso8859-1
+.gitignore git-encoding=iso8859-1 zos-working-tree-encoding=iso8859-1
+
+# Binary files
+*.jpg binary
+*.png binary
+*.gif binary
+*.zip binary

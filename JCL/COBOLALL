@@ -1,0 +1,66 @@
+//ALCCOBOL JOB ,NOTIFY=&SYSUID,
+// MSGCLASS=X,MSGLEVEL=(1,1),REGION=144M
+//****************************************************************
+//* ALLOCATE FILES FOR COBOL PROGRAM
+//*
+//* THE FOLLOWING HLQ SYMBOLIC MUST CONTAIN THE HIGH LEVEL
+//* QUALIFIER UNDER WHICH THE SAMPLE DATASETS MAY RESIDE.
+//*
+//    SET HLQ='DVASS'                 *PROJECT NAME
+//    SET MLQ='TESTPROG.OUTPUT.COBOL' *MIDDLE QUALIFIER
+//*************************
+//* CLEAN UP DATASETS
+//*************************
+//DELETE   EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//SYSOUT   DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//DD1      DD DSN=&HLQ..&MLQ..OBJ,
+//            DISP=(MOD,DELETE,DELETE),
+//            UNIT=SYSDA,SPACE=(CYL,(0))
+//DD2      DD DSN=&HLQ..&MLQ..LOAD,
+//            DISP=(MOD,DELETE,DELETE),
+//            UNIT=SYSDA,SPACE=(CYL,(0))
+//*DD3      DD DSN=&HLQ..&MLQ..COBOL,
+//*            DISP=(MOD,DELETE,DELETE),
+//*            UNIT=SYSDA,SPACE=(CYL,(0))
+//*DD4      DD DSN=&HLQ..&MLQ..COBCOPY,
+//*            DISP=(MOD,DELETE,DELETE),
+//*            UNIT=SYSDA,SPACE=(CYL,(0))
+//*DD5      DD DSN=&HLQ..&MLQ..TRANFILE,
+//*            DISP=(MOD,DELETE,DELETE),
+//*            UNIT=SYSDA,SPACE=(CYL,(0))
+//*DD6      DD DSN=&HLQ..&MLQ..CUSTFILE,
+//*            DISP=(MOD,DELETE,DELETE),
+//*            UNIT=SYSDA,SPACE=(CYL,(0))
+//*************************
+//* ALLOCATE DATASETS
+//*************************
+//ALLOCAT EXEC PGM=IEFBR14,COND=(8,LT)
+//SYSOUT   DD SYSOUT=*
+//SYSPRINT DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//DD1      DD DSN=&HLQ..&MLQ..OBJ,
+//            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
+//            SPACE=(TRK,(100,10),RLSE),
+//            BLKSIZE=(32720),DSNTYPE=LIBRARY
+//DD2      DD DSN=&HLQ..&MLQ..LOAD,
+//            DISP=(NEW,CATLG),LRECL=0,RECFM=U,DSORG=PO,
+//            SPACE=(TRK,(100,10),RLSE),
+//            BLKSIZE=(32720),DSNTYPE=LIBRARY
+//*DD3      DD DSN=&HLQ..&MLQ..COBOL,
+//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
+//*            SPACE=(TRK,(100,10),RLSE),
+//*            BLKSIZE=(32720),DSNTYPE=LIBRARY
+//*DD4      DD DSN=&HLQ..&MLQ..COBCOPY,
+//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
+//*            SPACE=(TRK,(100,10),RLSE),
+//*            BLKSIZE=(32720),DSNTYPE=LIBRARY
+//*DD5      DD DSN=&HLQ..&MLQ..TRANFILE,
+//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PS,
+//*            SPACE=(TRK,(100,10),RLSE),
+//*            BLKSIZE=(32720)
+//*DD6      DD DSN=&HLQ..&MLQ..CUSTFILE,
+//*            DISP=(NEW,CATLG),LRECL=600,RECFM=VB,DSORG=PS,
+//*            SPACE=(TRK,(100,10),RLSE),
+//*            BLKSIZE=(604)

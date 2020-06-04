@@ -1,0 +1,34 @@
+//RUNPLI  JOB ,NOTIFY=&SYSUID,
+// MSGCLASS=X,MSGLEVEL=(1,1),REGION=0M,COND=(4,LT)
+//*
+//****************************************************************
+//* EXECUTE PL/I PROGRAM
+//*****************************************************************
+//    SET HLQ='DVASS'                  *PROJECT NAME
+//    SET MLQOUT='TESTPROG.OUTPUT.PLI' *MIDDLE OUTPUT QUALIFIER
+//    SET MLQIN='TESTPROG.INPUT.PLI'   *MIDDLE INPUT QUALIFIER
+//    SET SPACE1='SYSALLDA,SPACE=(CYL,(1,1))' *SPACE ALLOCATION
+//*
+//*************************
+//* CLEAN UP
+//*************************
+//DELETE   EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//SYSOUT   DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//DD1      DD DSN=&HLQ..&MLQOUT..CUSTRPT,
+//            DISP=(MOD,DELETE,DELETE),UNIT=SYSDA,SPACE=(CYL,(0))
+//*
+//*************************
+//* RUN PSAM1
+//*************************
+//RUNPSAM1 EXEC PGM=PSAM1
+//STEPLIB DD DISP=SHR,DSN=&HLQ..&MLQOUT..PLILOAD
+//SYSPRINT DD SYSOUT=*
+//SYSOUT   DD SYSOUT=*
+//CUSTFILE DD DISP=SHR,DSN=&HLQ..&MLQIN..CUSTFILE
+//TRANFILE DD DISP=SHR,DSN=&HLQ..&MLQIN..TRANFILE
+//CUSTRPT  DD DSN=&HLQ..&MLQOUT..CUSTRPT,
+//    DISP=(NEW,CATLG),UNIT=SYSDA,SPACE=(TRK,(10,10),RLSE),
+//    DSORG=PS,RECFM=FB,LRECL=133,BLKSIZE=0
+//SYSIN    DD DUMMY

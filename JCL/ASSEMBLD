@@ -1,13 +1,8 @@
 //BLDASM  JOB ,NOTIFY=&SYSUID,
 // MSGCLASS=X,MSGLEVEL=(1,1),REGION=0M,COND=(4,LT)
 //*
-//****************************************************************
-//* LICENSED MATERIALS - PROPERTY OF IBM
-//* "RESTRICTED MATERIALS OF IBM"
-//* (C) COPYRIGHT IBM CORPORATION 2020. ALL RIGHTS RESERVED
-//* US GOVERNMENT USERS RESTRICTED RIGHTS - USE, DUPLICATION,
-//* OR DISCLOSURE RESTRICTED BY GSA ADP SCHEDULE
-//* CONTRACT WITH IBM CORPORATION
+//*****************************************************************
+//* TRANSLATE AND LINK ASSMEBLER PROGRAM
 //*****************************************************************
 //*
 //* THE FOLLOWING SYMBOLICS NEED TO BE UPDATED WITH THE ASSEMBLER

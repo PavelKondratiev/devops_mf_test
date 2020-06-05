@@ -21,18 +21,6 @@
 //DD2      DD DSN=&HLQ..&MLQ..LOAD,
 //            DISP=(MOD,DELETE,DELETE),
 //            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD3      DD DSN=&HLQ..&MLQ..COBOL,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD4      DD DSN=&HLQ..&MLQ..COBCOPY,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD5      DD DSN=&HLQ..&MLQ..TRANFILE,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD6      DD DSN=&HLQ..&MLQ..CUSTFILE,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
 //*************************
 //* ALLOCATE DATASETS
 //*************************
@@ -48,19 +36,4 @@
 //            DISP=(NEW,CATLG),LRECL=0,RECFM=U,DSORG=PO,
 //            SPACE=(TRK,(100,10),RLSE),
 //            BLKSIZE=(32720),DSNTYPE=LIBRARY
-//*DD3      DD DSN=&HLQ..&MLQ..COBOL,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(32720),DSNTYPE=LIBRARY
-//*DD4      DD DSN=&HLQ..&MLQ..COBCOPY,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(32720),DSNTYPE=LIBRARY
-//*DD5      DD DSN=&HLQ..&MLQ..TRANFILE,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PS,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(32720)
-//*DD6      DD DSN=&HLQ..&MLQ..CUSTFILE,
-//*            DISP=(NEW,CATLG),LRECL=600,RECFM=VB,DSORG=PS,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(604)
+

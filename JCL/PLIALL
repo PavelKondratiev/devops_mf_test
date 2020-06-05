@@ -21,18 +21,6 @@
 //DD2      DD DSN=&HLQ..&MLQ..PLILOAD,
 //            DISP=(MOD,DELETE,DELETE),
 //            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD3      DD DSN=&HLQ..&MLQ..PLI,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD4      DD DSN=&HLQ..&MLQ..PLINC,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD5      DD DSN=&HLQ..&MLQ..PLI.TRANFILE,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
-//*DD6      DD DSN=&HLQ..&MLQ..PLI.CUSTFILE,
-//*            DISP=(MOD,DELETE,DELETE),
-//*            UNIT=SYSDA,SPACE=(CYL,(0))
 //*************************
 //* ALLOCATE DATASETS
 //*************************
@@ -48,19 +36,4 @@
 //            DISP=(NEW,CATLG),LRECL=0,RECFM=U,DSORG=PO,
 //            SPACE=(TRK,(100,10),RLSE),
 //            BLKSIZE=(32720),DSNTYPE=LIBRARY
-//*DD3      DD DSN=&HLQ..&MLQ..PLI,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(32720),DSNTYPE=LIBRARY
-//*DD4      DD DSN=&HLQ..&MLQ..PLINC,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PO,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(32720),DSNTYPE=LIBRARY
-//*DD5      DD DSN=&HLQ..&MLQ..PLI.TRANFILE,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PS,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(32720)
-//*DD6      DD DSN=&HLQ..&MLQ..PLI.CUSTFILE,
-//*            DISP=(NEW,CATLG),LRECL=80,RECFM=FB,DSORG=PS,
-//*            SPACE=(TRK,(100,10),RLSE),
-//*            BLKSIZE=(80)
+

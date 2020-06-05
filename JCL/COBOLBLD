@@ -2,7 +2,7 @@
 // MSGCLASS=X,MSGLEVEL=(1,1),REGION=144M
 //*****************************************************************
 //* COMPILE AND LINK COBOL PROGRAM
-//***
+//*****************************************************************
 //*
 //* THE FOLLOWING SYMBOLICS ARE PROVIDED TO ALLOW THE USER
 //* EASILY CUSTOMIZE THE JCL TO YOUR SYSTEM.  THE ONLY SYMBOLIC
@@ -19,7 +19,7 @@
 //    SET SPACE2='SYSALLDA,SPACE=(CYL,(1,1))' *SPACE ALLOCATION
 //***************************
 //*                         *
-//*  COMPILE SAM2          **
+//*  COMPILE SAM2           *
 //*                         *
 //***************************
 //CMPLSAM2 EXEC PGM=IGYCRCTL,PARM='LIST,MAP,NODYN'
@@ -46,7 +46,7 @@
 //SYSUT15  DD UNIT=&SPACE1
 //***************************
 //*                         *
-//*  COMPILE SAM1          **
+//*  COMPILE SAM1           *
 //*                         *
 //***************************
 //CMPLSAM1 EXEC PGM=IGYCRCTL,PARM='LIST,MAP'

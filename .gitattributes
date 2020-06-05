@@ -3,7 +3,7 @@
 # Selected binary files will not be translated at all.
 
 # End of line processing 
-* text auto
+# * text auto
 
 # The default for text files
 * git-encoding=iso8859-1 zos-working-tree-encoding=ibm-1047

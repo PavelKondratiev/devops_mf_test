@@ -2,6 +2,9 @@
 # git's .gitattributes and .gitignore files to be encoded as EBCDIC.
 # Selected binary files will not be translated at all.
 
+# End of line processing 
+* text eol=crlf
+
 # The default for text files
 * git-encoding=iso8859-1 zos-working-tree-encoding=ibm-1047
 

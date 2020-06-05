@@ -1,8 +1,6 @@
-## Sample COBOL, PL/I, and HLASM files for the "IBM Z® Open Editor" for COBOL, PL/I, and HLASM
+## Sample COBOL, PL/I, and HLASM files for Devops as a Service project
 
 This repository provides sample COBOL, PL/I, and HLASM programs, along with JCL and data files to compile and run them.
-
-These examples are provided to allow you to not only experience the [IBM Z® Open Editor](https://marketplace.visualstudio.com/items?itemName=IBM.zopeneditor), but also in conjunction with the [Zowe VS Code Extension](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe), experience the powerful capabilities for IBM z/OS development and processing.
 
 The sample applications consist of the following files:
 

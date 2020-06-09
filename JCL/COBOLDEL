@@ -1,0 +1,28 @@
+//DELCOB JOB (ACCTNO),NOTIFY=&SYSUID,
+// MSGCLASS=X,MSGLEVEL=(1,1),REGION=144M
+//****************************************************************
+//*
+//* THE FOLLOWING HLQ SYMBOLIC MUST CONTAIN THE HIGH LEVEL
+//* QUALIFIER UNDER WHICH THE SAMPLE DATASETS MAY RESIDE.
+//*
+//    SET HLQ='DVASS'                 *PROJECT NAME
+//    SET MLQ='TESTPROG.OUTPUT.COBOL' *MIDDLE QUALIFIER
+//*************************
+//* CLEAN UP OUTPUT DATASETS
+//*************************
+//DELETE   EXEC PGM=IEFBR14
+//SYSPRINT DD SYSOUT=*
+//SYSOUT   DD SYSOUT=*
+//SYSUDUMP DD SYSOUT=*
+//DD1      DD DSN=&HLQ..&MLQ..OBJ,
+//            DISP=(MOD,DELETE,DELETE),
+//            UNIT=SYSDA,SPACE=(CYL,(0))
+//DD2      DD DSN=&HLQ..&MLQ..LOAD,
+//            DISP=(MOD,DELETE,DELETE),
+//            UNIT=SYSDA,SPACE=(CYL,(0))
+//DD3      DD DSN=&HLQ..&MLQ..CUSTOUT,
+//            DISP=(MOD,DELETE,DELETE),
+//            UNIT=SYSDA,SPACE=(CYL,(0))
+//DD4      DD DSN=&HLQ..&MLQ..CUSTRPT,
+//            DISP=(MOD,DELETE,DELETE),
+//            UNIT=SYSDA,SPACE=(CYL,(0))

@@ -8,28 +8,26 @@ The sample applications consist of the following files:
 
 - COBOL programs: `SAM1` and `SAM2`
 - COPYBOOKS: `CUSTCOPY` and `TRANREC`
-- Data source files: `CUSTFILE` and `TRANFILE`
-- JCL members that set up and run the application: `ALLOCATE` and `RUN`.
+- Data source files: `DEVASS.TESTPROG.INPUT.COBOL.CUSTFILE` (CUSTFILE) and `DEVASS.TESTPROG.INPUT.COBOL.CUSTFILE` (TRANFILE)
+- JCL members that set up and run the application: `COBOLALL`, `COBOLBLD` and `COBOLRUN`.
   - _Please Note - the JCL files are to be used as templates, you may need to update the compiler library name and you will need to update the `HLQ` parm with your TSO user id_
 
-`SAM1` reads in both the `CUSTFILE` and `TRANFILE` data files, then performs different actions on the `CUSTFILE` based on transactions from `TRANFILE`. Valid transactions are `ADD`, `UPDATE`, and `DELETE`. When an `UPDATE` transaction is processed, `SAM1` calls `SAM2` to perform the requested update. At the end of processing the `TRANFILE`, `SAM1` generates a report on the transactions processed and produces an updated `CUSTFILE`.
+`SAM1` reads in both the `CUSTFILE` and `TRANFILE` data files, then performs different actions on the `*.CUSTFILE` based on transactions from `TRANFILE`. Valid transactions are `ADD`, `UPDATE`, and `DELETE`. When an `UPDATE` transaction is processed, `SAM1` calls `SAM2` to perform the requested update. At the end of processing the `TRANFILE`, `SAM1` generates a report on the transactions processed and produces an updated `CUSTFILE`.
 
 `SAM2` also includes some base code in place for `CRUNCH` transactions which are mentioned in the Use Case below.
 
-The `ALLOCATE.jcl` file will allocate the necessary data sets on the MVS host that need to be in place prior to using the `Zowe CLI` commands to copy the files from your local workspace into the pre-allocated data sets and to run the application.  The `RUN.jcl` will compile, link, and run the programs.
+The `COBOLALL` file will allocate the necessary data sets on the MVS host that need to be in place prior to further actions.
+The `COBOLBLD` will compile and link-edit the program.
+The `COBOLRUN` will run the program.
 
-The files created with the `ALLOCATE.jcl` are:
+The files created with the `COBOLALL` are:
 
 ```ascii
-USER1.SAMPLE.COBOL
-USER1.SAMPLE.COBCOPY
-USER1.SAMPLE.OBJ
-USER1.SAMPLE.LOAD
-USER1.SAMPLE.CUSTFILE
-USER1.SAMPLE.TRANFILE
+<HLQ>.OBJ
+<HLQ>.LOAD
 ```
 
-The application creates a new `CUSTFILE` and produces a customer report in `USER1.SAMPLE.CUSTRPT`.
+The application creates a new output `DVASS.TESTPROG.INPUT.COBOL.CUSTFILE` and produces a customer report in `DVASS.TESTPROG.INPUT.COBOL.CUSTRPT`.
 
 ### A Sample COBOL Use Case
 
@@ -43,28 +41,26 @@ In looking at the files, you will notice a new COPYBOOK, `SAM2PARM`, which was c
 
 - PL/I programs: `PSAM1` and `PSAM2`
 - INCLUDES: `BALSTATS` and `CUSTPLI`
-- Data source files: `PLI.TRANFILE` and `PLI.CUSTFILE`
-- JCL members that set up and run the application: `PLIALLOC` and `RUNPSAM1`.
+- Data source files: `DEVASS.TESTPROG.INPUT.PLI.TRANFILE` (TRANFILE) and `DEVASS.TESTPROG.INPUT.PLI.CUSTFILE` (CUSTFILE)
+- JCL members that set up and run the application: `PLIALL`, `PLIBLD` and `PLIRUN`.
   - _Please Note - the JCL files are to used as templates, you may need to update the compiler library name and you will need to update the `HLQ` parm with your TSO user id_
 
-`PSAM1` reads in both the `PLI.CUSTFILE` and `PLI.TRANFILE` data files, then produces a report with customer information and a Totals summary section. Valid transactions are `PRINT` and `TOTALS`. A `PRINT` transaction prints the Customer records to the Customer section of the report. When `PSAM1` reads in a `TOTALS` transaction, it generates the Totals Report section.
+`PSAM1` reads in both the `CUSTFILE` and `TRANFILE` data files, then produces a report with customer information and a Totals summary section. Valid transactions are `PRINT` and `TOTALS`. A `PRINT` transaction prints the Customer records to the Customer section of the report. When `PSAM1` reads in a `TOTALS` transaction, it generates the Totals Report section.
 
 `PSAM2` generates running totals from amounts passed in from `PSAM1`.
 
-The `PLIALLOC.jcl` file will allocate the necessary data sets on the MVS host that need to be in place prior to using the Zowe CLI commands to copy the files from your local workspace into the pre-allocated data sets and to run the application.  The `RUNPSAM1.jcl` will compile, link, and run the programs.
+The `PLIALL` file will allocate the necessary data sets on the MVS host that need to be in place prior to further actions.
+The `PLIBLD` will compile and link-edit the program.
+The `PLIRUN` will run the program.
 
-The files created with the `PLIALLOC.jcl` are:
+The files created with the `PLIALL` are:
 
 ```ascii
-USER1.SAMPLE.PLIOBJ
-USER1.SAMPLE.PLILOAD
-USER1.SAMPLE.PLI
-USER1.SAMPLE.PLINC
-USER1.SAMPLE.PLI.CUSTFILE
-USER1.SAMPLE.PLI.TRANFILE
+<HLQ>.PLI.PLIOBJ
+<HLQ>.PLI.PLILOAD
 ```
 
-The application creates a report, `USER1.SAMPLE.PLI.CUSTRPT`.
+The application creates a report, `DEVASS.TESTPROG.OUTPUT.PLI.CUSTRPT`.
 
 ### A Sample PL/I Use Case
 
@@ -77,25 +73,24 @@ Again, in the `Tutorial-Complete` branch, notice the new program `PSAM3`, the ne
 - HLASM programs: `ASAM1`, `ASAM2`, and `IRR@XACS`
   - _`IRR@XACS` is included to provide a better example for the Outline View, it can be found in the `SYS1.SAMPLIB` on the z host_
 - Copybook: `REGISTRS`
-- Data source file: `ASM.FILEIN`
-- JCL members that set up and run the application: `ASMALLOC` and `RUNASAM1`.
+- Data source file: `DEVASS.TESTPROG.INPUT.ASM.FILEIN` (FILEIN)
+- JCL members that set up and run the application: `ASSEMALL`, `ASSEMBLD` and `ASSEMRUN`.
   - _Please Note - the JCL files are to used as templates, you may need to update the compiler library, the z/OS Macro library, the Assembler Macro library, and the Assembler Modgen library names.  You will also need to update the `HLQ` parm with your TSO user id_
 
-`ASAM1` reads in a record from the `ASM.FILEIN` dataset.  It will then write it to the output file `ASM.FILEOUT` as well as the record number and column number records.
+`ASAM1` reads in a record from the `FILEIN` dataset.  It will then write it to the output file `DEVASS.TESTPROG.OUTPUT.ASM.FILEOUT` as well as the record number and column number records.
 
-The `ASMALLOC.jcl` file will allocate the necessary data sets on the MVS host that need to be in place prior to using the Zowe CLI commands to copy the files from your local workspace into the pre-allocated data sets and to run the application.  The `RUNASAM1.jcl` will compile, link, and run the programs.
+The `ASSEMALL` file will allocate the necessary data sets on the MVS host that need to be in place prior to further actions.
+The `ASSEMBLD` will compile and link-edit the program.
+The `ASSEMRUN` will run the program.
 
-The files created with the `ASMALLOC.jcl` are:
+The libraries created with the `ASSEMALL` are:
 
 ```ascii
-USER1.SAMPLE.ASMOBJ
-USER1.SAMPLE.ASMLOAD
-USER1.SAMPLE.ASM
-USER1.SAMPLE.ASMCOPY
-USER1.SAMPLE.ASM.FILEIN
+<HLQ>.ASM.OBJ
+<HLQ>.ASM.LOAD
 ```
 
-The application creates a file, `USER1.SAMPLE.ASM.FILEOUT`.
+The application creates a file, `DEVASS.TESTPROG.OUTPUT.ASM.FILEOUT`.
 
 ### A Sample HLASM Use Case
 
